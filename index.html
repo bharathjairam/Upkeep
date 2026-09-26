@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Property Management App — Let's build this together</title>
+<meta name="description" content="A place to pitch the Property Management App idea and let interested people take action: register interest, suggest features, and give feedback." />
+<link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="#top">
+      <span class="brand-dot" aria-hidden="true"></span>
+      Property Management App
+    </a>
+    <nav class="header-nav">
+      <a href="#idea">The idea</a>
+      <a href="#actions">Get involved</a>
+      <a href="#kit">UI kit</a>
+      <a class="btn btn-ghost btn-sm" href="#" id="github-link" target="_blank" rel="noopener">View on GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero container">
+    <span class="eyebrow">Open idea &middot; looking for collaborators</span>
+    <h1>A simpler way to manage properties, tenants, and rent &mdash; built with the people who'll use it.</h1>
+    <p class="lead">
+      This page pitches the Property Management App idea and lets anyone take real action on it:
+      register interest, suggest a feature, ask a question, or leave feedback. Every action here
+      files a structured GitHub Issue on this repo, so the whole discussion stays public,
+      searchable, and open.
+    </p>
+    <div class="hero-actions">
+      <a href="#actions" class="btn btn-primary">See how to get involved</a>
+      <a href="#idea" class="btn btn-secondary">Read the idea</a>
+    </div>
+  </section>
+
+  <section id="idea" class="section container">
+    <h2>The idea</h2>
+    <div class="card card-pad">
+      <p>
+        <strong>Replace this paragraph with your actual pitch.</strong> A Property Management App
+        for landlords and property managers to track properties, tenants, leases, rent payments,
+        and maintenance requests in one place &mdash; instead of spreadsheets, texts, and paper.
+        Describe who it's for, the core workflow, and what success looks like.
+      </p>
+      <ul class="tag-list">
+        <li class="tag">Stage: exploring</li>
+        <li class="tag">Looking for: landlords &amp; property managers</li>
+        <li class="tag">Looking for: contributors</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="actions" class="section container">
+    <h2>Get involved</h2>
+    <p class="section-intro">
+      Pick an action below. Filling the form and submitting opens a pre-filled GitHub Issue —
+      you'll need a free GitHub account, and a quick review before it's posted.
+    </p>
+
+    <div class="action-grid">
+
+      <div class="card action-card">
+        <h3>Register interest</h3>
+        <p class="muted">Tell us who you are and why this app would help you.</p>
+        <form class="action-form" data-action="interest" data-labels="interest">
+          <label>
+            Name
+            <input type="text" name="name" placeholder="Ada Lovelace" required />
+          </label>
+          <label>
+            What excites you about this idea?
+            <textarea name="reason" rows="3" placeholder="I manage 5 rental units and..." required></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary btn-block">Register interest</button>
+        </form>
+      </div>
+
+      <div class="card action-card">
+        <h3>Suggest a feature</h3>
+        <p class="muted">Have a specific capability in mind? Propose it.</p>
+        <form class="action-form" data-action="feature" data-labels="enhancement">
+          <label>
+            Feature title
+            <input type="text" name="title" placeholder="Automated rent reminders" required />
+          </label>
+          <label>
+            Describe it
+            <textarea name="description" rows="3" placeholder="What should it do, and why?" required></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary btn-block">Suggest feature</button>
+        </form>
+      </div>
+
+      <div class="card action-card">
+        <h3>Give feedback</h3>
+        <p class="muted">Concerns, praise, or open questions — all welcome.</p>
+        <form class="action-form" data-action="feedback" data-labels="feedback">
+          <label>
+            Your feedback
+            <textarea name="feedback" rows="4" placeholder="Share your thoughts..." required></textarea>
+          </label>
+          <label>
+            Name <span class="optional">(optional)</span>
+            <input type="text" name="name" placeholder="Anonymous" />
+          </label>
+          <button type="submit" class="btn btn-primary btn-block">Send feedback</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="kit" class="section container">
+    <h2>UI kit</h2>
+    <p class="section-intro">The components used to build this page, for reuse.</p>
+
+    <div class="card card-pad kit-block">
+      <h3>Buttons</h3>
+      <div class="kit-row">
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-ghost">Ghost</button>
+        <button class="btn btn-primary" disabled>Disabled</button>
+      </div>
+    </div>
+
+    <div class="card card-pad kit-block">
+      <h3>Tags</h3>
+      <ul class="tag-list">
+        <li class="tag">Default</li>
+        <li class="tag tag-accent">Accent</li>
+        <li class="tag tag-outline">Outline</li>
+      </ul>
+    </div>
+
+    <div class="card card-pad kit-block">
+      <h3>Form elements</h3>
+      <form class="kit-form">
+        <label>
+          Text input
+          <input type="text" placeholder="Placeholder text" />
+        </label>
+        <label>
+          Textarea
+          <textarea rows="3" placeholder="Placeholder text"></textarea>
+        </label>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>Built as a static site — hosted on GitHub Pages. Actions file Issues on the project repo.</p>
+  </div>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

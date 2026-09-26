@@ -1,0 +1,19 @@
+name: Suggest a feature
+description: Propose a specific capability for the Property Management App
+title: "Feature: "
+labels: ["enhancement"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Feature title
+      placeholder: Automated rent reminders
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe it
+      placeholder: What should it do, and why?
+    validations:
+      required: true
