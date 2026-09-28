@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Upkeep brand tokens — one accent (teal), used sparingly. See brand guideline. */
+  --color-ink: #1b2422;
+  --color-body: #4b5652;
+  --color-muted: #8c9791;
+  --color-border: #dde4e0;
+  --color-border-soft: #e9edeb;
+
+  --color-accent: #3fc7ac;
+  --color-accent-hover: #175a4f;
+  --color-accent-dark: #175a4f;
+  --color-accent-light: #8fe0cc;
+  --color-accent-soft: #e4f1ee;
+  --color-accent-contrast: #0e4739;
+
+  --color-success: #3fa360;
+  --color-success-soft: #e8f5ec;
+  --color-success-ink: #276b3d;
+  --color-warning: #db9b2a;
+  --color-warning-soft: #fbf1de;
+  --color-warning-ink: #8a6414;
+  --color-critical: #d6493e;
+  --color-critical-soft: #fbe9e7;
+  --color-critical-ink: #a3352c;
+
+  --color-surface: #ffffff;
+  --color-surface-subtle: #f7f9f8;
+}
+
+/* Dark theme is opt-in only (set data-theme="dark" on <html>) — it no longer follows the
+   OS/browser color-scheme preference, so the product stays light unless explicitly toggled. */
+:root[data-theme="dark"] {
+    --color-ink: #eef3f0;
+    --color-body: #b7c3bd;
+    --color-muted: #6c7a73;
+    --color-border: #2a3430;
+    --color-border-soft: #232c28;
+
+    --color-accent: #4fd9bc;
+    --color-accent-hover: #7fcdba;
+    --color-accent-dark: #3fbfa3;
+    --color-accent-light: #7fcdba;
+    --color-accent-soft: #16302a;
+    --color-accent-contrast: #0a3a2f;
+
+    --color-success-soft: #163224;
+    --color-success-ink: #8fd6a8;
+    --color-warning-soft: #33270f;
+    --color-warning-ink: #f0c975;
+    --color-critical-soft: #33201d;
+    --color-critical-ink: #f0918a;
+
+    --color-surface: #181f1c;
+    --color-surface-subtle: #101513;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-surface-subtle);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  scrollbar-width: thin;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.25s ease both;
+}

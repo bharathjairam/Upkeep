@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Redirecting…</title>
+<script>
+  // GitHub Pages has no server-side router, so a direct hit or refresh on a
+  // deep link like /app/manager/overview 404s. Stash the intended path and
+  // bounce to the app shell, which restores it before React Router mounts.
+  var path = location.pathname;
+  if (path.indexOf("/app/") === 0 || path === "/app") {
+    var rest = path.replace(/^\/app\/?/, "");
+    sessionStorage.setItem("pma_redirect", "/" + rest + location.search + location.hash);
+    location.replace("/app/");
+  } else {
+    location.replace("/");
+  }
+</script>
+</head>
+<body></body>
+</html>

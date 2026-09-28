@@ -1,50 +1,83 @@
-# Property Management App
+# Upkeep
 
-A static, frontend-only page for pitching the Property Management App idea and letting
-interested people take action on it — no backend, hosted free on GitHub Pages. Every
-action (register interest, suggest a feature, give feedback) opens a pre-filled GitHub
-Issue on this repo, so all discussion happens in public, standard GitHub Issues.
+A UK property maintenance product: tenants report issues, a property manager triages and
+routes them, landlords approve spend, vendors get dispatched and get it done — one job,
+tracked end to end. Two things live in this repo:
 
-## Before deploying
+1. **The marketing site** ([index.html](index.html)) — a static landing page: a hero, a
+   role picker, an interactive "how it works" walkthrough, and a dashboard preview. No
+   forms, no backend — every screen it points to is the real product.
+2. **The app itself** ([app/](app/)) — a real, working product: a React + TypeScript +
+   Tailwind single-page app with a sign-in screen and four routed workspaces (Property
+   Manager, Tenant, Landlord, Vendor) sharing one maintenance-job workflow (report → triage
+   → approve → assign → complete → confirm). No backend here either — state lives in the
+   browser's `localStorage`, seeded with sample data — so it deploys as static files but
+   behaves like a real app, not a slideshow.
 
-1. Edit `assets/js/app.js` and set:
-   ```js
-   const GITHUB_OWNER = "your-github-username";
-   const GITHUB_REPO = "your-repo-name";
-   ```
-2. Edit `index.html` — replace the placeholder pitch under **The idea** with your actual
-   plan for the app (target users, core workflows, what problem it solves).
-3. Make sure the repo's **Issues** tab is enabled (Settings → Features → Issues).
+Both are static and both deploy to GitHub Pages: the marketing site at the site root, the
+app at `/app/`.
+
+## Brand system
+
+Both surfaces implement the same design system — one accent (teal), a warm off-white
+surface, Plus Jakarta Sans for text and JetBrains Mono for job references/timestamps, pill
+shapes for anything clickable, and a four-colour status-pill language (new / pending /
+active / done) reused everywhere a job's state is shown. Tokens live in
+[assets/css/styles.css](assets/css/styles.css) (marketing site) and
+[app/src/index.css](app/src/index.css) (app, as Tailwind v4 theme variables) — keep them in
+sync if either changes.
 
 ## Run locally
 
-Just open `index.html` in a browser, or serve it:
+Marketing site — just open `index.html` in a browser, or serve it:
 
 ```bash
 python3 -m http.server 8000
 ```
 
+The app — needs Node.js:
+
+```bash
+cd app
+npm install
+npm run dev
+```
+
 ## Deploy to GitHub Pages
 
-1. Push this folder to a new GitHub repo.
+Deployment is automated via [.github/workflows/deploy-pages.yml](.github/workflows/deploy-pages.yml):
+it builds `app/` and assembles it together with the root static files (marketing site under
+`/`, app under `/app/`) into one site, using GitHub's official Pages Actions.
+
+1. Push this repo to GitHub.
 2. Go to **Settings → Pages**.
-3. Under **Build and deployment**, set **Source** to `Deploy from a branch`.
-4. Pick the `main` branch and `/ (root)` folder, then **Save**.
-5. Your site will be live at `https://<username>.github.io/<repo>/` within a minute or two.
+3. Under **Build and deployment**, set **Source** to `GitHub Actions` (not "Deploy from a
+   branch" — the app needs a build step).
+4. Push to `main` (or run the workflow manually from the **Actions** tab). Your site will
+   be live at `https://<username>.github.io/<repo>/` within a couple of minutes, with the
+   app at `https://<username>.github.io/<repo>/app/`.
 
-## How submissions work
-
-Forms don't POST anywhere — there's no backend. On submit, the page builds a GitHub
-"new issue" URL with the title/body/labels filled in from the form and opens it in a new
-tab. The visitor reviews it on GitHub and clicks **Submit new issue** themselves (this
-requires a free GitHub account). The matching templates in `.github/ISSUE_TEMPLATE/` also
-let people file the same structured issues directly from the repo's Issues tab.
+Deep links into the app (e.g. `/app/manager/triage`) work on a direct hit or refresh via
+the redirect trick in [404.html](404.html) — GitHub Pages has no server-side router, so
+that file stashes the intended path and bounces to the app shell, which restores it before
+the app's router mounts. The marketing site's role cards link to `/app/?role=<role>`, which
+preselects that role on the sign-in screen.
 
 ## Structure
 
 ```
-index.html                        Landing page + action forms + UI kit showcase
-assets/css/styles.css             Design tokens and components
-assets/js/app.js                  Form → GitHub Issue logic (edit OWNER/REPO here)
-.github/ISSUE_TEMPLATE/*.yml      Native GitHub issue forms matching each action
+index.html                          Marketing site: hero, role picker, how-it-works, dashboard preview
+assets/css/styles.css               Marketing site brand tokens and components
+assets/js/app.js                    Hero video fade-in + how-it-works tab switching
+assets/video/hero-building.mp4      Hero background video (Pixabay Content License, free for commercial use)
+404.html                            GitHub Pages SPA redirect for deep links into /app/*
+.github/workflows/deploy-pages.yml  Builds app/ and deploys both sites together
+
+app/                                The product: React + TypeScript + Tailwind
+  src/index.css                     Brand theme tokens (Tailwind v4 @theme)
+  src/lib/                          Data model, seed data, the localStorage-backed store
+  src/lib/roles.tsx                 Per-role config: nav items, icons, routes
+  src/lib/meta.ts                   Status/urgency → brand colour + label mapping
+  src/components/                  Shared UI (JobCard, RoleShell, Badge, form fields...)
+  src/routes/                      SignIn + manager/tenant/landlord/vendor pages
 ```

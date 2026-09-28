@@ -3,8 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Property Management App — Let's build this together</title>
-<meta name="description" content="A place to pitch the Property Management App idea and let interested people take action: register interest, suggest features, and give feedback." />
+<title>Upkeep — Repairs, sorted before the tenant has to ask twice</title>
+<meta name="description" content="Upkeep connects tenants, property managers, landlords, and vendors around one repair job. Try a live demo as any role." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
@@ -13,146 +17,223 @@
   <div class="container header-row">
     <a class="brand" href="#top">
       <span class="brand-dot" aria-hidden="true"></span>
-      Property Management App
+      Upkeep
     </a>
     <nav class="header-nav">
-      <a href="#idea">The idea</a>
-      <a href="#actions">Get involved</a>
-      <a href="#kit">UI kit</a>
-      <a class="btn btn-ghost btn-sm" href="#" id="github-link" target="_blank" rel="noopener">View on GitHub</a>
+      <a href="#how">How it works</a>
+      <a href="#roles">Roles</a>
+      <a class="btn btn-primary btn-sm" href="/app/">Log in</a>
     </nav>
   </div>
 </header>
 
 <main id="top">
 
-  <section class="hero container">
-    <span class="eyebrow">Open idea &middot; looking for collaborators</span>
-    <h1>A simpler way to manage properties, tenants, and rent &mdash; built with the people who'll use it.</h1>
-    <p class="lead">
-      This page pitches the Property Management App idea and lets anyone take real action on it:
-      register interest, suggest a feature, ask a question, or leave feedback. Every action here
-      files a structured GitHub Issue on this repo, so the whole discussion stays public,
-      searchable, and open.
-    </p>
-    <div class="hero-actions">
-      <a href="#actions" class="btn btn-primary">See how to get involved</a>
-      <a href="#idea" class="btn btn-secondary">Read the idea</a>
-    </div>
-  </section>
-
-  <section id="idea" class="section container">
-    <h2>The idea</h2>
-    <div class="card card-pad">
-      <p>
-        <strong>Replace this paragraph with your actual pitch.</strong> A Property Management App
-        for landlords and property managers to track properties, tenants, leases, rent payments,
-        and maintenance requests in one place &mdash; instead of spreadsheets, texts, and paper.
-        Describe who it's for, the core workflow, and what success looks like.
+  <!-- Video: "Building, Apartment, Construction" — Pixabay Content License (free for commercial use, no attribution required). -->
+  <section class="hero-video">
+    <video class="hero-video-el" id="hero-video" autoplay muted loop playsinline preload="auto">
+      <source src="assets/video/hero-building.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-video-overlay"></div>
+    <div class="container hero-video-content">
+      <span class="eyebrow">Property maintenance, sorted</span>
+      <h1>Repairs, sorted — before the tenant has to ask twice.</h1>
+      <p class="lead">
+        Tenants report issues in a minute. A property manager triages and routes it.
+        Vendors get assigned instantly. Landlords see every job in one place —
+        nothing lost in a group chat.
       </p>
-      <ul class="tag-list">
-        <li class="tag">Stage: exploring</li>
-        <li class="tag">Looking for: landlords &amp; property managers</li>
-        <li class="tag">Looking for: contributors</li>
-      </ul>
+      <div class="hero-actions">
+        <a href="#roles" class="btn btn-primary btn-lg">Try it now</a>
+        <a href="#how" class="btn btn-on-dark">See how it works</a>
+      </div>
+    </div>
+    <a href="#roles" class="scroll-cue" aria-label="Scroll to explore">&darr;</a>
+  </section>
+
+  <section id="roles" class="section section-roles container">
+    <h2 class="roles-heading">Choose your role</h2>
+    <div class="role-grid">
+      <a class="role-card" href="/app/?role=manager">
+        <span class="role-icon">&#127970;</span>
+        <h3>Property Manager</h3>
+        <p class="muted">Triage requests, route approvals, keep every job moving.</p>
+        <span class="role-cta">Enter as Property Manager &rarr;</span>
+      </a>
+      <a class="role-card" href="/app/?role=tenant">
+        <span class="role-icon">&#129489;</span>
+        <h3>Tenant</h3>
+        <p class="muted">Report issues and track them through to done.</p>
+        <span class="role-cta">Enter as Tenant &rarr;</span>
+      </a>
+      <a class="role-card" href="/app/?role=landlord">
+        <span class="role-icon">&#127968;</span>
+        <h3>Landlord</h3>
+        <p class="muted">Approve spend, track compliance, see the portfolio.</p>
+        <span class="role-cta">Enter as Landlord &rarr;</span>
+      </a>
+      <a class="role-card" href="/app/?role=vendor">
+        <span class="role-icon">&#128295;</span>
+        <h3>Vendor</h3>
+        <p class="muted">See what's assigned, schedule it, get it done.</p>
+        <span class="role-cta">Enter as Vendor &rarr;</span>
+      </a>
     </div>
   </section>
 
-  <section id="actions" class="section container">
-    <h2>Get involved</h2>
-    <p class="section-intro">
-      Pick an action below. Filling the form and submitting opens a pre-filled GitHub Issue —
-      you'll need a free GitHub account, and a quick review before it's posted.
-    </p>
+  <section id="how" class="section container">
+    <h2>One job, five steps, everyone in sync.</h2>
+    <p class="section-intro">No jargon, no group chats — just a job moving through the people who need to see it.</p>
 
-    <div class="action-grid">
+    <div class="tab-buttons" role="tablist">
+      <button class="tab-btn active" data-tab="report">1. Report</button>
+      <button class="tab-btn" data-tab="triage">2. Triage</button>
+      <button class="tab-btn" data-tab="approve">3. Approve</button>
+      <button class="tab-btn" data-tab="assign">4. Assign</button>
+      <button class="tab-btn" data-tab="complete">5. Complete</button>
+    </div>
 
-      <div class="card action-card">
-        <h3>Register interest</h3>
-        <p class="muted">Tell us who you are and why this app would help you.</p>
-        <form class="action-form" data-action="interest" data-labels="interest">
-          <label>
-            Name
-            <input type="text" name="name" placeholder="Ada Lovelace" required />
-          </label>
-          <label>
-            What excites you about this idea?
-            <textarea name="reason" rows="3" placeholder="I manage 5 rental units and..." required></textarea>
-          </label>
-          <button type="submit" class="btn btn-primary btn-block">Register interest</button>
-        </form>
+    <div class="tab-panels">
+      <div class="tab-panel active" data-panel="report">
+        <div class="tab-panel-inner">
+          <div>
+            <h3>The tenant reports it</h3>
+            <p class="muted">A tenant sees something's wrong, adds a photo, and reports it in under a
+              minute &mdash; category, urgency, and a description. No phone tag, no lost texts.</p>
+          </div>
+          <div class="job-card">
+            <span class="job-avatar">JL</span>
+            <div class="job-info">
+              <div class="job-title">Heating &mdash; 12 Elm Street</div>
+              <div class="job-sub">JOB-1007 &middot; Jordan Lee &middot; 2m ago</div>
+              <div class="job-desc">"Boiler is making a loud banging noise and radiators are cold."</div>
+            </div>
+            <span class="status status-new">New</span>
+          </div>
+        </div>
       </div>
 
-      <div class="card action-card">
-        <h3>Suggest a feature</h3>
-        <p class="muted">Have a specific capability in mind? Propose it.</p>
-        <form class="action-form" data-action="feature" data-labels="enhancement">
-          <label>
-            Feature title
-            <input type="text" name="title" placeholder="Automated rent reminders" required />
-          </label>
-          <label>
-            Describe it
-            <textarea name="description" rows="3" placeholder="What should it do, and why?" required></textarea>
-          </label>
-          <button type="submit" class="btn btn-primary btn-block">Suggest feature</button>
-        </form>
+      <div class="tab-panel" data-panel="triage">
+        <div class="tab-panel-inner">
+          <div>
+            <h3>The property manager triages it</h3>
+            <p class="muted">Every report lands in one queue. Set an urgency and a cost estimate, and
+              the job routes itself &mdash; auto-approved under threshold, or sent to the landlord above it.</p>
+          </div>
+          <div class="job-card">
+            <span class="job-avatar">AO</span>
+            <div class="job-info">
+              <div class="job-title">Electrical &mdash; 45 Oak Avenue</div>
+              <div class="job-sub">JOB-1002 &middot; Estimated &pound;380 &middot; over &pound;250</div>
+              <div class="job-desc">Bright Lettings triaged: Emergency, sent for landlord approval.</div>
+            </div>
+            <span class="status status-pending">Awaiting approval</span>
+          </div>
+        </div>
       </div>
 
-      <div class="card action-card">
-        <h3>Give feedback</h3>
-        <p class="muted">Concerns, praise, or open questions — all welcome.</p>
-        <form class="action-form" data-action="feedback" data-labels="feedback">
-          <label>
-            Your feedback
-            <textarea name="feedback" rows="4" placeholder="Share your thoughts..." required></textarea>
-          </label>
-          <label>
-            Name <span class="optional">(optional)</span>
-            <input type="text" name="name" placeholder="Anonymous" />
-          </label>
-          <button type="submit" class="btn btn-primary btn-block">Send feedback</button>
-        </form>
+      <div class="tab-panel" data-panel="approve">
+        <div class="tab-panel-inner">
+          <div>
+            <h3>The landlord signs off</h3>
+            <p class="muted">High-cost jobs go straight to the landlord for a yes or no &mdash; with the
+              full description and cost estimate in front of them. Nothing waits on a phone call.</p>
+          </div>
+          <div class="job-card">
+            <span class="job-avatar">PS</span>
+            <div class="job-info">
+              <div class="job-title">Electrical &mdash; 45 Oak Avenue</div>
+              <div class="job-sub">JOB-1002 &middot; Approved by Priya Shah</div>
+              <div class="job-desc">Back with the property manager to assign a contractor.</div>
+            </div>
+            <span class="status status-active">Approved</span>
+          </div>
+        </div>
       </div>
 
+      <div class="tab-panel" data-panel="assign">
+        <div class="tab-panel-inner">
+          <div>
+            <h3>A vendor is dispatched</h3>
+            <p class="muted">The property manager assigns a trusted contractor from their own
+              directory. The vendor accepts and schedules the visit &mdash; no marketplace lock-in.</p>
+          </div>
+          <div class="job-card">
+            <span class="job-avatar">BS</span>
+            <div class="job-info">
+              <div class="job-title">Electrical &mdash; 45 Oak Avenue</div>
+              <div class="job-sub">JOB-1002 &middot; Bright Spark Electrical</div>
+              <div class="job-desc">Accepted the job and booked a visit for tomorrow.</div>
+            </div>
+            <span class="status status-active">Assigned</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="complete">
+        <div class="tab-panel-inner">
+          <div>
+            <h3>Done, and confirmed</h3>
+            <p class="muted">The vendor marks it complete with notes and a final cost. The tenant
+              confirms it's actually fixed &mdash; closing the loop with a timestamped audit trail.</p>
+          </div>
+          <div class="job-card">
+            <span class="job-avatar">AO</span>
+            <div class="job-info">
+              <div class="job-title">Electrical &mdash; 45 Oak Avenue</div>
+              <div class="job-sub">JOB-1002 &middot; &pound;380 actual cost</div>
+              <div class="job-desc">Confirmed by Amara Okafor. Full history kept for compliance.</div>
+            </div>
+            <span class="status status-done">Closed</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="kit" class="section container">
-    <h2>UI kit</h2>
-    <p class="section-intro">The components used to build this page, for reuse.</p>
+  <section class="section container">
+    <p class="eyebrow">One dashboard, every job</p>
+    <h2>What a property manager sees this morning</h2>
 
-    <div class="card card-pad kit-block">
-      <h3>Buttons</h3>
-      <div class="kit-row">
-        <button class="btn btn-primary">Primary</button>
-        <button class="btn btn-secondary">Secondary</button>
-        <button class="btn btn-ghost">Ghost</button>
-        <button class="btn btn-primary" disabled>Disabled</button>
+    <div class="dash-preview">
+      <div class="dash-preview-head">
+        <span class="t">Today's jobs</span>
+        <span class="n">4 open</span>
       </div>
-    </div>
-
-    <div class="card card-pad kit-block">
-      <h3>Tags</h3>
-      <ul class="tag-list">
-        <li class="tag">Default</li>
-        <li class="tag tag-accent">Accent</li>
-        <li class="tag tag-outline">Outline</li>
-      </ul>
-    </div>
-
-    <div class="card card-pad kit-block">
-      <h3>Form elements</h3>
-      <form class="kit-form">
-        <label>
-          Text input
-          <input type="text" placeholder="Placeholder text" />
-        </label>
-        <label>
-          Textarea
-          <textarea rows="3" placeholder="Placeholder text"></textarea>
-        </label>
-      </form>
+      <div class="dash-preview-body">
+        <div class="job-card">
+          <span class="job-avatar">RK</span>
+          <div class="job-info">
+            <div class="job-title">Boiler making noise &mdash; Flat 12</div>
+            <div class="job-sub">JOB-1015 &middot; Ravi K.</div>
+          </div>
+          <span class="status status-new">New</span>
+        </div>
+        <div class="job-card">
+          <span class="job-avatar">DS</span>
+          <div class="job-info">
+            <div class="job-title">Leaking tap &mdash; kitchen, Flat 4B</div>
+            <div class="job-sub">JOB-1017 &middot; Dana S.</div>
+          </div>
+          <span class="status status-active">In progress</span>
+        </div>
+        <div class="job-card">
+          <span class="job-avatar">MP</span>
+          <div class="job-info">
+            <div class="job-title">Broken lock &mdash; front door, 9 Elm Ct</div>
+            <div class="job-sub">JOB-1009 &middot; Marcus P.</div>
+          </div>
+          <span class="status status-overdue">Overdue</span>
+        </div>
+        <div class="job-card">
+          <span class="job-avatar">TW</span>
+          <div class="job-info">
+            <div class="job-title">Annual gas safety check &mdash; 3 Oak Row</div>
+            <div class="job-sub">JOB-0998 &middot; Tara W.</div>
+          </div>
+          <span class="status status-done">Completed</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -160,11 +241,10 @@
 
 <footer class="site-footer">
   <div class="container">
-    <p>Built as a static site — hosted on GitHub Pages. Actions file Issues on the project repo.</p>
+    <span>&copy; 2026 Upkeep. Property maintenance, sorted.</span>
+    <a href="/app/">Log in</a>
   </div>
 </footer>
-
-<div id="toast" class="toast" role="status" aria-live="polite"></div>
 
 <script src="assets/js/app.js"></script>
 </body>
