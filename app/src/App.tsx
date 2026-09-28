@@ -1,6 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { StoreProvider } from "./lib/store";
 import { ROLES } from "./lib/roles";
+import { detectBasename } from "./lib/basename";
 import { RoleShell } from "./components/RoleShell";
 import { SignIn } from "./routes/SignIn";
 
@@ -40,7 +41,7 @@ export default function App() {
 
   return (
     <StoreProvider>
-      <BrowserRouter basename="/app">
+      <BrowserRouter basename={detectBasename()}>
         <Routes>
           <Route path="/" element={<SignIn />} />
 

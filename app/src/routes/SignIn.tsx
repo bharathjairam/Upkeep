@@ -4,6 +4,7 @@ import { ROLES, roleByKey, type RoleKey } from "../lib/roles";
 import { Button } from "../components/ui/Button";
 import { Field, Input } from "../components/ui/Field";
 import { SignInVisual } from "../components/SignInVisual";
+import { detectSiteRoot } from "../lib/basename";
 import { Circle, ArrowLeft } from "lucide-react";
 
 const DEMO_ACCOUNTS: Record<RoleKey, { email: string }> = {
@@ -35,7 +36,7 @@ export function SignIn() {
             <Circle className="h-3 w-3 fill-accent text-accent" />
             <span className="text-lg font-bold tracking-tight text-ink">Upkeep</span>
           </div>
-          <a href="/" className="flex items-center gap-1.5 text-sm font-semibold text-body hover:text-accent-dark">
+          <a href={detectSiteRoot()} className="flex items-center gap-1.5 text-sm font-semibold text-body hover:text-accent-dark">
             <ArrowLeft className="h-4 w-4" /> Back to site
           </a>
         </div>

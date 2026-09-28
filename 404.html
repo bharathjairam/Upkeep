@@ -7,13 +7,20 @@
   // GitHub Pages has no server-side router, so a direct hit or refresh on a
   // deep link like /app/manager/overview 404s. Stash the intended path and
   // bounce to the app shell, which restores it before React Router mounts.
-  var path = location.pathname;
-  if (path.indexOf("/app/") === 0 || path === "/app") {
-    var rest = path.replace(/^\/app\/?/, "");
+  //
+  // The site root isn't always "/" — a GitHub Pages project site serves from
+  // "/<repo-name>/", so this finds "app" as a path segment wherever it is
+  // instead of assuming the site is hosted at the domain root.
+  var segments = location.pathname.split("/").filter(Boolean);
+  var appIndex = segments.indexOf("app");
+  var siteRoot = "/" + segments.slice(0, appIndex === -1 ? 0 : appIndex).join("/") + (appIndex > 0 ? "/" : "");
+
+  if (appIndex !== -1) {
+    var rest = segments.slice(appIndex + 1).join("/");
     sessionStorage.setItem("pma_redirect", "/" + rest + location.search + location.hash);
-    location.replace("/app/");
+    location.replace(siteRoot + "app/");
   } else {
-    location.replace("/");
+    location.replace(siteRoot);
   }
 </script>
 </head>
