@@ -74,6 +74,19 @@ body {
   scrollbar-width: thin;
 }
 
+/* iOS Safari auto-zooms the page when a focused input/select/textarea has a
+   font-size under 16px — and because this is a client-routed SPA, that zoom
+   level sticks even after navigating away (e.g. from sign-in into a
+   dashboard), leaving the whole app looking zoomed in until the user
+   manually pinches back out. Bumping form fields to 16px on small screens
+   only (not the `sm:` breakpoint and up) avoids triggering it, without
+   changing the 14px `text-sm` styling used everywhere else. */
+@media (max-width: 639px) {
+  input, select, textarea {
+    font-size: 16px;
+  }
+}
+
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
